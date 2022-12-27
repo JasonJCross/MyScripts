@@ -1,0 +1,15 @@
+name: Update README
+on: [push, pull_request]
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update README
+        run: |
+          echo "This is a new line in the README" >> README.md
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git add README.md
+          git commit -m "Update README"
