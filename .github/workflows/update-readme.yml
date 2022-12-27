@@ -14,7 +14,7 @@ jobs:
     # https://www.gnu.org/software/sed/manual/sed.html
           # TREEVIEW=$(find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g')
         run: |
-          sed 's/TREEVIEW/TREEVIEW!!!/' README.md
+          sed -i 's/TREEVIEW/TREEVIEW!!!/' README.md
           git config --global user.email "$GIT_EMAIL"
           git config --global user.name "$GIT_USERNAME"
           git add README.md 
