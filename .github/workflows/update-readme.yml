@@ -5,7 +5,7 @@ jobs:
   update-readme:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Update README
         run: |
           echo "This is a new line in the README" >> README.md
