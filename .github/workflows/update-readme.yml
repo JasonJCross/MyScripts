@@ -12,9 +12,9 @@ jobs:
           GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
     # For more information about sed and its usage, you can refer to the sed manual page or online resources such as the GNU sed documentation.
     # https://www.gnu.org/software/sed/manual/sed.html
+          # TREEVIEW=$(find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g')
         run: |
-          TREEVIEW=$(find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g')
-          sed -i "s|<!-- TREEVIEW -->|$TREEVIEW|g" README.md
+          sed "s/TREEVIEW|TREEVIEW!!!|g" README.md
           git config --global user.email "$GIT_EMAIL"
           git config --global user.name "$GIT_USERNAME"
           git add README.md 
