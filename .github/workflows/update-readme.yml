@@ -13,8 +13,8 @@ jobs:
     # For more information about sed and its usage, you can refer to the sed manual page or online resources such as the GNU sed documentation.
     # https://www.gnu.org/software/sed/manual/sed.html
         run: |
-          TREEVIEW=$(tree -tf --noreport -I 'node_modules|.git' --charset utf-8 -aC)
-          sed -i "s/<!-- TREEVIEW -->/$TREEVIEW/g" README.md
+          TREEVIEW=$(tree -tf --noreport -I 'node_modules|.git' --charset utf-8 -aC | sed 's|/|\\/|g') 
+          sed -i "s|<!-- TREEVIEW -->|$TREEVIEW|g" README.md
           git config --global user.email "$GIT_EMAIL"
           git config --global user.name "$GIT_USERNAME"
           git add README.md 
