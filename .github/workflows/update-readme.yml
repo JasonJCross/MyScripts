@@ -7,8 +7,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Update README
+        env:
+          GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
         run: |
           echo "This is a new line in the README" >> README.md |
+          git config --global user.email "$GIT_EMAIL"
+          git config --global user.name "$GIT_USERNAME"
           git add README.md |
           git commit -m "Update README" |
           git push
